@@ -1,0 +1,18 @@
+typedef INT = int;
+
+def f(x:INT) = $x + 1;
+
+def one = 1 as INT;
+
+f(1);	// error
+f(one); // OK
+
+
+typedef Pair(A,B) = <A,B>;
+
+def g(x:Pair(int,real)) = let y=$x; in <y@1+y@2, "hello"> as Pair;
+
+def p = <1,2.3> as Pair;
+
+g(p);
+

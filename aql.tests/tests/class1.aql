@@ -1,0 +1,6 @@
+class Foo(A) { foo : A; method update : A -> Foo(A); }
+             { update(x) = this.foo = x; }
+
+def Foo = new Foo.update;
+
+define f = Foo(1);

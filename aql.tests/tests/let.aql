@@ -1,0 +1,11 @@
+//#trace;
+
+let x = "toto\n";
+ in { write(x);
+      let y = "titi\n";
+       in { x = y;
+            write(x);
+          };
+      write(x);
+    };
+

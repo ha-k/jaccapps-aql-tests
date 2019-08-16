@@ -1,0 +1,23 @@
+def rand = (random*100).toInt;
+
+def sp (n : int) = let s = new{};
+                       i = 0;
+                    in { while i < n
+		            do let j = 0;
+                                in { while j < n
+                                        do { (<rand,rand>)+s;
+                                             j = j+1;
+                                           };
+                                     i = i+1;
+                                   };
+                         s;
+                       };
+
+def test (n:int) = let S = sp(n);
+                   in [+,new{}] { [+,0] { b | <a,a+1> <- S }
+                                | <a,b> <- S
+                                , <b,a> <- S
+                                };
+
+#time;
+test(100);

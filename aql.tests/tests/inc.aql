@@ -1,0 +1,12 @@
+def test (x:int) = (x%2 == 0);
+def test (x:real) = (x > 0);
+
+#include "inc1.test";
+
+if test(3) then
+   if test(2) then
+      "a"
+   else
+      1
+else
+   2.3;

@@ -1,0 +1,7 @@
+def a (f,x) = f(x);
+def c (k) = let x:int; in a(k,x);
+def i (x) = x;
+def j (x:int) = x;
+
+c(i);
+c(j);

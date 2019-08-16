@@ -1,0 +1,48 @@
+define s = set {1, 2, 3};
+
+define rs = set {1.2, 2.3, 3.4, 4.5, 5.6};
+
+def d (x : int) = 2*x;
+
+def ds (x : int) = set {2*x};
+
+def sq (x : real) = x*x;
+
+def sq (x : int) = x*x;
+
+def sqs (x : int) = set {x*x};
+
+def i (x) = x;
+
+def u6 (s : {int}) = s U set {6};
+
+def is (x) = set {x};
+
+def u6s (s : {int}) = set {s U set {6}};
+
+//#code;
+//#trace;
+
+hom(s, d, +, 0);
+
+hom(2..7, d, *, 1);
+
+hom(rs, sq, + : (real, real)->real, 0.0);
+
+hom(s, ds, + : (int,{int}) -> {int}, new{});
+
+hom(s, sqs, - : forall A.(A, {A})->{A}, hom(s, ds, +, new{}));
+
+hom(s, sqs, - : forall A.({A}, {A})->{A}, hom(s, ds, +, new{}));
+
+hom(set {"a", "b", "c"}, function(s : string) set {s+s}, +, new{});
+
+hom(set {set {1, 2}, set {3, 4, 5}}, i, U=, new{});
+
+hom(set {set {1, 2}, set {3, 4, 5}}, u6, U=, new{});
+
+hom(set {set {1, 2}, set {3, 4, 5}}, is, U=, new{});
+
+hom(set {set {1, 2}, set {3, 4, 5}}, u6s, U=, new{});
+
+#exit;

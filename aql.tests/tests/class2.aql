@@ -1,0 +1,28 @@
+// #code;
+// #trace;
+// #fields;
+
+class Pair(A,B)
+  {
+    fst : A;
+    snd : B;
+
+    method setFst :     A -> Pair(A,B);
+    method setSnd :     B -> Pair(A,B);
+    method allocate    : (A,B) -> Pair(A,B);
+  }
+  {
+    setFst (x) = this.fst = x;
+    setSnd (x) = this.snd = x;
+    allocate (x, y) = this.setFst(x).setSnd(y);
+  }
+
+def Pair = new Pair.allocate;
+
+def swap (p) = let tmp=p.fst; in { p.fst = p.snd; p.snd = tmp; };
+#code;
+#trace; 
+
+define p = Pair(1,2);
+
+p = p.swap;

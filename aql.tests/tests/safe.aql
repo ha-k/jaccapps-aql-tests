@@ -1,0 +1,14 @@
+type f : int -> int;
+type g : int -> int;
+type h : int -> int;
+type k : int -> int;
+
+def f (n) = if n==0 then g(0)+h(1) else 3;
+f(0);g(0);h(0);k(0);
+def g (n) = if n==0 then h(1)-k(2) else 2;
+f(0);g(0);h(0);k(0);
+def h (n) = if n==0 then k(2)*f(3) else 1;
+f(0);g(0);h(0);k(0);
+def k (n) = if n==0 then g(3)%h(4) else 0;
+f(0);g(0);h(0);k(0);
+

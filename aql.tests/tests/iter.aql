@@ -1,0 +1,18 @@
+define s1 = set{1};
+define s2 = set{2};
+define s3 = set{3};
+
+//#trace;
+[U,new{}] { x | x <- set{ s1, s2, s3 } };
+
+let S = set{ s1, s2, s3 };
+    i = 0;
+    u = new{};
+    s;
+in { while i < S.size
+     do { s = if i == 0 then S.first else S.next(s);
+          u = s U u;
+          i = i+1;
+        };
+     u;
+   };

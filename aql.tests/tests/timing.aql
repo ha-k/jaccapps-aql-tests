@@ -1,0 +1,43 @@
+#mute;
+
+{
+    write("def f1(n) = let m; in { m = 1; while n>0 do { m = m*n; n = n-1; }; m; };\n");
+};
+def f1(n) = let m; in { m = 1; while n>0 do { m = m*n; n = n-1; }; m; };
+
+{
+    write("type aux : (int,int) -> int;\n");
+    write("def aux(n:int,m:int) = if n==0 then m else aux(n-1,n*m);\n");
+    write("def f2(n) = aux(n,1);\n");
+};
+
+type aux : (int,int) -> int;
+def aux(n:int,m:int) = if n==0 then m else aux(n-1,n*m);
+def f2(n) = aux(n,1);
+
+{
+    write("type f3 : int -> int;\n");
+    write("def f3(n) = if n==0 then 1 else n*f3(n-1);\n");
+};
+
+type f3 : int -> int;
+def f3(n) = if n==0 then 1 else n*f3(n-1);
+
+#mute;
+
+    write("f1(10);\n");
+#time;
+f1(10);
+#time;
+
+    write("f2(10);\n");
+#time;
+f2(10);
+#time;
+
+    write("f3(10);\n");
+#time;
+f3(10);
+#time;
+
+

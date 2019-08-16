@@ -1,0 +1,62 @@
+class List(A)
+  {
+    head : A;
+    tail : List(A);
+
+    method add : A -> List(A);
+    method setHead : A -> List(A);
+    method setTail : List(A) -> List(A);
+    method cons : (A, List(A)) -> List(A);
+    method reverse : List(A);
+  }
+  {
+    add (x) = new List.cons(x,this);
+    setHead (x) = { this.head = x; };
+    setTail (x) = { this.tail = x; };
+    cons (x, y) = this.setHead(x).setTail(y);
+    reverse = let l=this; r; in { while l != null do { r = new List.cons(l.head,r); l = l.tail; }; r; };
+  }
+
+def List = new List.cons;
+
+// Recursive version of map (note that the type declaratioon is necessary for the recursion):
+// type map : [A,B].((A -> B, List(A)) -> List(B));
+// def map (f,l) = if (l == null) then null else List(f(l.head),map(f,l.tail));
+
+// Iterative map (note that no type declaration is necessary for this version):
+def map (f,l) = let r; in { while l != null do { r = List(f(l.head),r); l = l.tail; }; r.reverse; };
+
+type length : [A].(List(A) -> int);
+def length (l) = if (l == null) then 0 else 1 + length(l.tail);
+
+type sum : List(int) -> int;
+def sum (l) = if (l == null) then 0 else l.head + sum(l.tail);
+
+def toString (l : List) =
+    if l == null then "[]"
+    else let s = "[";
+         in { while l != null do
+                {
+                  s = s + l.head + (if l.tail == null then "]" else ", ");
+                  l = l.tail;
+                };
+              s;
+            };
+  
+
+def writeln (x) = write(""+x+"\n");
+
+define l = List(1,List(2,List(3,null)));
+
+writeln(l.toString());
+
+// A few calls to test the above...
+// Note the "object-oriented" message-passing style of syntax (normal functional style also works):
+l.length;           // or simply: length(l);
+writeln(==(2).map(l).toString());       // or simply: map(==(2),l);
+==(2).map(l);       // or simply: map(==(2),l);
+*(2).map(l).sum;    // or simply: sum(map(*(2),l));
+
+
+
+

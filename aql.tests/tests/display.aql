@@ -1,0 +1,37 @@
+//  class Foo
+//      { b : boolean = true;
+//        c : char = 'a';
+//      }
+
+//  class Test
+//      { b : boolean;
+//        i : int;
+//        c : char;
+//        v : void;
+//        r : real;
+//        s : string;
+//        t : <boolean,int,char,int[]>;
+//        o : Foo = new Foo;
+//      }
+
+//  new Test;
+
+class Poly (A) { a : A; }
+
+class Poly2 (A,B) { a : Poly(A); b : B; }
+
+define p = new Poly.a = true;
+
+p;
+
+p.a;
+
+//  define p2 = (new Poly2.a = p).b = false;
+
+//  p2;
+
+//  p2.a;
+
+//  p2.a.a;
+
+//  p2.b;

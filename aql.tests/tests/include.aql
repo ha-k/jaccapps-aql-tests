@@ -1,0 +1,4 @@
+write("hello world\n");
+#include "toto";
+#include "titi";
+write("bye, stay well! ...\n");

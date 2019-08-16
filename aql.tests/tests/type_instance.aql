@@ -1,0 +1,13 @@
+class Foo (A) { a : A; }
+
+new Foo(real);
+
+class Bar(A,B) { a : A; b : B; }
+
+deftype Buz(A) = Bar(A,A);
+
+new Buz(int);
+
+typedef Boz(A) = Bar(A,A);
+
+new Boz(int);

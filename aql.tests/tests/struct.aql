@@ -1,0 +1,4 @@
+struct foo(A,B) { a : A, b : B };
+
+define p = <1,"hello"> as foo;
+

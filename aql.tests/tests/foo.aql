@@ -1,0 +1,3 @@
+class Foo(A) { foo : A; }
+
+define f = new Foo.foo = 1;

@@ -1,0 +1,11 @@
+def x = 1.2;
+def x = true;
+def x = 1;
+
+//#typing;
+
+choose 1;
+
+choose 1.2;
+
+def f(x) = if (choose x) then write("yes") else write("no");

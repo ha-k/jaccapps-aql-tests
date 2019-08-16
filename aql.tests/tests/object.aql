@@ -1,0 +1,13 @@
+#code;
+
+class Foo { bar : Bar = new Bar; }
+
+class Bar { buz : Buz = new Buz; }
+
+class Buz { n : int = 23; m : int = this.n + 1; }
+
+//class Buz { n : int = 23; foo : Foo = new Foo; }
+
+#trace;
+
+new Foo;

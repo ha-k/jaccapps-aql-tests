@@ -1,0 +1,26 @@
+class List(A)
+  {
+    head : A;
+    tail : List(A);
+
+    method setHead : A -> List(A);
+    method setTail : List(A) -> List(A);
+    method cons : (A, List(A)) -> List(A);
+    method reverse : List(A);
+    method map : [B].((A -> B) -> List(B));
+  }
+  {
+    setHead (x) = { this.head = x; this; };
+    setTail (x) = { this.tail = x; this; };
+    cons (x, y) = this.setHead(x).setTail(y);
+    reverse = let l=this; r; in { while l != null do { r = new List.cons(l.head,r); l = l.tail; }; r; };
+    map (f) = let l=this; r; in { while l != null do { r = new List.cons(f(l.head),r); l = l.tail; }; r.reverse; };
+  }
+
+def List = new List.cons;
+
+def l = List(1,List(2,List(3,null)));
+l = l;
+
+l.map(*(2));
+l.map(==(2));

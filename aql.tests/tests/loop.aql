@@ -1,0 +1,7 @@
+//#code;#trace;
+
+foreach (i <- 1..2)
+ foreach (j <- 3..4, i+j < 6)
+  write(i);
+
+foreach (i <- 1..5) write(i);

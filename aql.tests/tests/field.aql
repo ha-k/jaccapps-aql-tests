@@ -1,0 +1,22 @@
+// #code;
+// #fields;
+#trace;
+
+class Counter
+  {
+    test1 : int = this.value + 1;
+    value : int = 2;
+    test2 : int = this.value + 1;
+    next : int -> int = function(n) { this.set(this.value + n); this.value; };
+    method set : int -> Counter;
+  }
+  {
+    set (n : int) = this.value = n;
+  }
+
+define c = new Counter;
+
+c.next(3);
+
+c;
+
